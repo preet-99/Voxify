@@ -31,7 +31,7 @@ export default function FeedbackForm() {
         {/* Submit Button */}
         <button
           type="submit"
-          className="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition"
+          className="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition cursor-pointer"
         >
           Submit Feedback
         </button>

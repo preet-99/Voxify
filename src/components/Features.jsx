@@ -1,14 +1,14 @@
 import { useState } from "react";
 import FeatureCard from "./FeatureCard";
 import ToolInputPanel from "./ToolInputPanel";
-import { Video, Image, Mic, Type, SquareSplitHorizontal , FileAudio} from "lucide-react";
+import { Video, Image, Mic, Type, SquareSplitHorizontal , FileAudio, AudioLines, FileText } from "lucide-react";
 
 export default function Features() {
   const [selectedTool, setSelectedTool] = useState(null);
 
   return (
     <section id="features" className="py-20 px-6 bg-[#bbdefb]">
-      <h2 className="text-3xl font-bold text-center mb-12 text-green-900">
+      <h2 className="text-3xl font-bold text-center mb-12 text-black">
         Our Smart AI Tools
       </h2>
 
@@ -24,7 +24,7 @@ export default function Features() {
           id="audioTotext"
           title="Audio to Text"
           desc="Extract speech from audio instantly."
-          icon={<Video />}
+          icon={<AudioLines />}
           onClick={setSelectedTool}
         />
         <FeatureCard
@@ -53,14 +53,14 @@ export default function Features() {
           id="imagetextspeech"
           title="Image Text to Speech"
           desc="Turn Image text into natural-sounding speech."
-          icon={<Type />}
+          icon={ <Image />}
           onClick={setSelectedTool}
         />
         <FeatureCard
           id="textfiletospeech"
           title="Text File to Speech"
           desc="Turn text file into natural-sounding speech."
-          icon={<Type />}
+          icon={<FileText />}
           onClick={setSelectedTool}
         />
       </div>

@@ -1,20 +1,30 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Mic } from "lucide-react"; // Added Mic for logo icon
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
     <nav className="bg-[darkslategrey] shadow-md">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <h1 className="text-white text-2xl font-bold">AI Tools Hub</h1>
-        {/* Logo here */}
-        <div className="hidden md:flex gap-6 text-white font-medium">
-          <a href="#video" className="hover:text-gray-200">Video to Text</a>
-          <a href="#image" className="hover:text-gray-200">Image to Text</a>
-          <a href="#speech" className="hover:text-gray-200">Text ↔ Speech</a>
+      <div className="max-w-7xl mx-auto px-2 py-4 flex items-center justify-between"> {/* Reduced px-4 to px-2 for logo further left */}
+        {/* Logo + Name on the left */}
+        <div className="flex items-center gap-2">
+          <Mic className="text-white w-8 h-8" /> {/* Simple logo using Mic icon */}
+          <h1 className="text-white text-2xl font-bold">Voxify</h1> {/* Name */}
         </div>
 
+        {/* Creative element on the right: A single "Explore Tools" button with icon */}
+        <div className="hidden md:flex items-center gap-2"> {/* Reduced gap, aligned right */}
+          <a 
+            href="#features" 
+            className="flex items-center gap-1 bg-white text-[darkslategrey] px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition-colors"
+          >
+            <Mic className="w-5 h-5" /> {/* Added icon for creativity */}
+            Explore Tools
+          </a>
+        </div>
+
+        {/* Mobile menu button, fully right */}
         <button
           className="md:hidden text-white"
           onClick={() => setOpen(!open)}
@@ -23,11 +33,16 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* Mobile menu with creative button */}
       {open && (
-        <div className="md:hidden flex flex-col bg-purple-700 px-6 pb-4 text-white">
-          <a href="#video" className="py-2">Video to Text</a>
-          <a href="#image" className="py-2">Image to Text</a>
-          <a href="#speech" className="py-2">Text ↔ Speech</a>
+        <div className="md:hidden flex flex-col bg-[darkslategrey] px-6 pb-4 text-white">
+          <a 
+            href="#features" 
+            className="py-2 flex items-center gap-1 hover:text-gray-300 transition-colors"
+          >
+            <Mic className="w-5 h-5" /> {/* Added icon for creativity */}
+            Explore Tools
+          </a>
         </div>
       )}
     </nav>

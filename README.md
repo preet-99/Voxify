@@ -59,10 +59,22 @@ src/
 └── README.md
 ```
 
+# 👨‍💻 Authors
 
-###  Backend (Flask)
+- @preet-99 - Preet Vishwakarma
+- @harshit2525 - Harshit Aggarwal
 
-```text
-├── app.py # Main Flask app
-├── requirements.txt # Dependencies
+## 🛠️ Installation
+
+### Frontend (React)
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### Backend (Flask)
+```bash
+backend.py # Main Flask app
+requirements.txt # Dependencies
 ```

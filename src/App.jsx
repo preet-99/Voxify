@@ -18,7 +18,7 @@ export default function App() {
       <Navbar />
       <Hero />
       <HowItWorks />
-      <FeatureCard/>
+      {/* <FeatureCard/> */}
       <Features/>
       <Testimonials />
       {/* <Pricing /> */}
