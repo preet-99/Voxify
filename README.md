@@ -68,13 +68,8 @@ src/
 
 ### Frontend (React)
 ```bash
-cd frontend
+cd vite-project
 npm install
 npm run dev
 ```
 
-### Backend (Flask)
-```bash
-backend.py # Main Flask app
-requirements.txt # Dependencies
-```

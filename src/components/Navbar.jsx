@@ -9,7 +9,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-2 py-4 flex items-center justify-between"> {/* Reduced px-4 to px-2 for logo further left */}
         {/* Logo + Name on the left */}
         <div className="flex items-center gap-2">
-          <Mic className="text-white w-8 h-8" /> {/* Simple logo using Mic icon */}
+          <Mic className="text-green-800 w-8 h-8 bg font-extrabold" />
+           {/* Simple logo using Mic icon */}
           <h1 className="text-white text-2xl font-bold">Voxify</h1> {/* Name */}
         </div>
 
@@ -19,7 +20,7 @@ export default function Navbar() {
             href="#features" 
             className="flex items-center gap-1 bg-white text-[darkslategrey] px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition-colors"
           >
-            <Mic className="w-5 h-5" /> {/* Added icon for creativity */}
+            <Mic className="w-5 h-5 text-green-800 font-extrabold" /> {/* Added icon for creativity */}
             Explore Tools
           </a>
         </div>
@@ -40,7 +41,7 @@ export default function Navbar() {
             href="#features" 
             className="py-2 flex items-center gap-1 hover:text-gray-300 transition-colors"
           >
-            <Mic className="w-5 h-5" /> {/* Added icon for creativity */}
+            <Mic className="w-5 h-5 text-green-800 font-extrabold" /> {/* Added icon for creativity */}
             Explore Tools
           </a>
         </div>

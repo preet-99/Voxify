@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export default function ToolInputPanel({ selectedTool }) {
   const [ttsAudioURL, setTtsAudioURL] = useState(null);
   const [imgTtsAudioURL, setImgTtsAudioURL] = useState(null);
-  const [textFileTtsAudioURL, setTextFileTtsAudioURL] = useState(null); // New state for text file to speech
+  const [textFileTtsAudioURL, setTextFileTtsAudioURL] = useState(null);
   const [text, setText] = useState("");
   const [msg, setMsg] = useState(null);
   const [videoURL, setVideoURL] = useState(null);
