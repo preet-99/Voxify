@@ -1,34 +1,34 @@
-# Voxify 🎙  
+# Voxify 🎙
 
 Voxify is a React + Flask based application that provides powerful media conversion features.  
-It allows users to seamlessly convert between video, audio, text, and speech with additional utilities like video trimming.  
+It allows users to seamlessly convert between video, audio, text, and speech with additional utilities like video trimming.
 
 ---
 
-## 🚀 Features  
+## 🚀 Features
 
-- 🎥 *Video to Text* – Transcribe spoken content from videos.  
-- 🎵 *Audio to Text* – Convert audio files into written transcripts.  
-- 🗣 *Text to Speech* – Generate natural speech from written text.  
-- 📄 *Text File to Speech* – Upload a text file and listen to its spoken version.  
-- 🖼 *Image to Speech* – Extract text from images (OCR) and convert it into speech.  
-- ✂ *Video Trimming* – Cut and save specific portions of videos.  
-
----
-
-## 🛠 Tech Stack  
-
-- *Frontend:* React (Vite)  
-- *Backend:* Flask (APIs and processing)  
-- *Core Tools:*  
-  - Speech Recognition (for transcription)  
-  - Text-to-Speech (TTS) engines  
-  - OCR (for image-to-text)  
-  - Video/Audio processing libraries  
+- 🎥 _Video to Text_ – Transcribe spoken content from videos.
+- 🎵 _Audio to Text_ – Convert audio files into written transcripts.
+- 🗣 _Text to Speech_ – Generate natural speech from written text.
+- 📄 _Text File to Speech_ – Upload a text file and listen to its spoken version.
+- 🖼 _Image to Speech_ – Extract text from images (OCR) and convert it into speech.
+- ✂ _Video Trimming_ – Cut and save specific portions of videos.
 
 ---
 
-## 📂 Project Structure  
+## 🛠 Tech Stack
+
+- _Frontend:_ React (Vite)
+- _Backend:_ Flask (APIs and processing)
+- _Core Tools:_
+  - Speech Recognition (for transcription)
+  - Text-to-Speech (TTS) engines
+  - OCR (for image-to-text)
+  - Video/Audio processing libraries
+
+---
+
+## 📂 Project Structure
 
 ### Frontend (React)
 
@@ -66,10 +66,11 @@ src/
 
 ## 🛠️ Installation
 
-### Frontend (React)
+### 1. Clone Repository :
+
 ```bash
+git clone https://github.com/preet-99/Voxify-Backend.git
 cd vite-project
 npm install
 npm run dev
 ```
-
