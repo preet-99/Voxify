@@ -69,7 +69,7 @@ src/
 ### 1. Clone Repository :
 
 ```bash
-git clone https://github.com/preet-99/Voxify-Backend.git
+git clone https://github.com/preet-99/Voxify.git
 cd vite-project
 npm install
 npm run dev
