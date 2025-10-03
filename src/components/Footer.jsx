@@ -29,7 +29,7 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             {/* About Section */}
             <div>
-                <img className="h-12 w-12" src="/microphone.gif" alt="" />
+                <img className="h-12 w-12" src="/mic.gif" alt="" />
               <h1 className="text-lg font-semibold mb-3 text-white">
                 About <strong>Voxify</strong>
               </h1>

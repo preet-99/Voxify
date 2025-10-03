@@ -20,10 +20,8 @@ export default function App() {
       <Navbar />
       <Hero />
       <HowItWorks />
-      {/* <FeatureCard/> */}
       <Features/>
       <Testimonials />
-      {/* <Pricing /> */}
       <FAQ />
       <CTA />
       <FeedbackForm/>

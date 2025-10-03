@@ -325,22 +325,18 @@ export default function ToolInputPanel({ selectedTool }) {
       setError("Please select a video file.");
       return;
     }
-    if (
-      !trimStart ||
-      !trimEnd ||
-      isNaN(trimStart) ||
-      isNaN(trimEnd) ||
-      trimStart < 0 ||
-      trimEnd <= trimStart
-    ) {
+    const start = parseFloat(trimStart);
+    const end = parseFloat(trimEnd);
+
+    if (isNaN(start) || isNaN(end) || start < 0 || end <= start) {
       setError(
         "Please enter valid start and end times (end time must be greater than start time)."
       );
       return;
     }
-    if (videoDuration && Number(trimEnd) > videoDuration) {
+    if (videoDuration && end > videoDuration) {
       setError(
-        `End time (${trimEnd}s) exceeds video duration (${videoDuration.toFixed(
+        `End time (${end}s) exceeds video duration (${videoDuration.toFixed(
           1
         )}s).`
       );
@@ -352,8 +348,8 @@ export default function ToolInputPanel({ selectedTool }) {
 
     const formData = new FormData();
     formData.append("video", selectedFile);
-    formData.append("start_time", trimStart);
-    formData.append("end_time", trimEnd);
+    formData.append("start_time", start.toString());
+    formData.append("end_time", end.toString());
 
     try {
       const response = await fetch("http://localhost:5000/trim_video", {
@@ -362,7 +358,8 @@ export default function ToolInputPanel({ selectedTool }) {
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to trim video: ${response.statusText}`);
+        const errorText = await response.text();
+        throw new Error(`Failed to trim video: ${errorText || response.statusText}`);
       }
 
       const videoBlob = await response.blob();
@@ -447,12 +444,22 @@ export default function ToolInputPanel({ selectedTool }) {
                 <h3 className="text-lg font-semibold text-green-900 mb-2">
                   Video to Text
                 </h3>
-                <input
-                  type="file"
-                  accept="video/*"
-                  className="mb-4"
-                  onChange={handleFileChange}
-                />
+                <label className="block mb-4">
+                  <span className="sr-only">Choose video file</span>
+                  <input
+                    type="file"
+                    accept="video/*"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                    onChange={handleFileChange}
+                  />
+                </label>
+                {selectedFile && (
+                  <video
+                    src={URL.createObjectURL(selectedFile)}
+                    controls
+                    className="mt-2 w-64 h-36 object-cover rounded-md mb-4"
+                  />
+                )}
                 <button
                   onClick={handleVideoToText}
                   className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
@@ -466,8 +473,17 @@ export default function ToolInputPanel({ selectedTool }) {
                 {error && <p className="text-red-600 mt-2">{error}</p>}
                 {transcribedText && (
                   <div className="mt-4">
-                    <h3>Transcribed Text:</h3>
-                    <p>{transcribedText}</p>
+                    <h3 className="text-md font-medium text-gray-700">Transcribed Text:</h3>
+                    <p className="bg-gray-100 p-3 rounded-md">{transcribedText}</p>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        navigator.clipboard.writeText(transcribedText)
+                      }
+                      className="mt-2 bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                    >
+                      Copy Text
+                    </button>
                   </div>
                 )}
               </div>
@@ -478,12 +494,15 @@ export default function ToolInputPanel({ selectedTool }) {
                 <h3 className="text-lg font-semibold text-green-900 mb-2">
                   Audio to Text
                 </h3>
-                <input
-                  type="file"
-                  accept="audio/*"
-                  className="mb-4"
-                  onChange={handleFileChange}
-                />
+                <label className="block mb-4">
+                  <span className="sr-only">Choose audio file</span>
+                  <input
+                    type="file"
+                    accept="audio/*"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                    onChange={handleFileChange}
+                  />
+                </label>
                 <button
                   onClick={handleAudioToText}
                   className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
@@ -497,8 +516,17 @@ export default function ToolInputPanel({ selectedTool }) {
                 {error && <p className="text-red-600 mt-2">{error}</p>}
                 {transcribedText && (
                   <div className="mt-4">
-                    <h3>Transcribed Text:</h3>
-                    <p>{transcribedText}</p>
+                    <h3 className="text-md font-medium text-gray-700">Transcribed Text:</h3>
+                    <p className="bg-gray-100 p-3 rounded-md">{transcribedText}</p>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        navigator.clipboard.writeText(transcribedText)
+                      }
+                      className="mt-2 bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                    >
+                      Copy Text
+                    </button>
                   </div>
                 )}
               </div>
@@ -509,17 +537,20 @@ export default function ToolInputPanel({ selectedTool }) {
                 <h3 className="text-lg font-semibold text-green-900 mb-2">
                   Trim Video
                 </h3>
-                <input
-                  type="file"
-                  accept="video/*"
-                  className="mb-4"
-                  onChange={handleFileChange}
-                />
+                <label className="block mb-4">
+                  <span className="sr-only">Choose video file</span>
+                  <input
+                    type="file"
+                    accept="video/*"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                    onChange={handleFileChange}
+                  />
+                </label>
                 {selectedFile && (
                   <video
                     src={URL.createObjectURL(selectedFile)}
                     controls
-                    className="mt-2 max-w-full mb-4"
+                    className="mt-2 w-64 h-36 object-cover rounded-md mb-4"
                   />
                 )}
                 <div className="mb-4">
@@ -531,13 +562,8 @@ export default function ToolInputPanel({ selectedTool }) {
                     min="0"
                     step="0.1"
                     value={trimStart}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      if (value === "" || Number(value) >= 0) {
-                        setTrimStart(value);
-                      }
-                    }}
-                    className="w-full p-2 border border-green-300 rounded"
+                    onChange={(e) => setTrimStart(e.target.value)}
+                    className="w-full p-2 border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     placeholder="e.g., 10.5"
                   />
                 </div>
@@ -552,19 +578,17 @@ export default function ToolInputPanel({ selectedTool }) {
                     value={trimEnd}
                     onChange={(e) => {
                       const value = e.target.value;
-                      if (value === "" || Number(value) >= 0) {
-                        setTrimEnd(value);
-                        if (videoDuration && Number(value) > videoDuration) {
-                          setError(
-                            `End time (${value}s) exceeds video duration (${videoDuration.toFixed(
-                              1
-                            )}s).`
-                          );
-                          setTrimEnd("");
-                        }
+                      setTrimEnd(value);
+                      if (videoDuration && Number(value) > videoDuration) {
+                        setError(
+                          `End time (${value}s) exceeds video duration (${videoDuration.toFixed(
+                            1
+                          )}s).`
+                        );
+                        setTrimEnd("");
                       }
                     }}
-                    className="w-full p-2 border border-green-300 rounded"
+                    className="w-full p-2 border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     placeholder="e.g., 20.5"
                   />
                 </div>
@@ -581,11 +605,11 @@ export default function ToolInputPanel({ selectedTool }) {
                 {error && <p className="text-red-600 mt-2">{error}</p>}
                 {trimmedVideoURL && (
                   <>
-                    <h3 className="mt-4">Trimmed Video:</h3>
+                    <h3 className="mt-4 text-md font-medium text-gray-700">Trimmed Video:</h3>
                     <video
                       src={trimmedVideoURL}
                       controls
-                      className="mt-2 max-w-full"
+                      className="mt-2 w-64 h-36 object-cover rounded-md"
                     />
                     <br />
                     <a href={downloadLink} download="trimmed_video.mp4">
@@ -603,12 +627,22 @@ export default function ToolInputPanel({ selectedTool }) {
                 <h3 className="text-lg font-semibold text-green-900 mb-2">
                   Video to Audio
                 </h3>
-                <input
-                  type="file"
-                  accept="video/*"
-                  className="mb-4"
-                  onChange={handleFileChange}
-                />
+                <label className="block mb-4">
+                  <span className="sr-only">Choose video file</span>
+                  <input
+                    type="file"
+                    accept="video/*"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                    onChange={handleFileChange}
+                  />
+                </label>
+                {selectedFile && (
+                  <video
+                    src={URL.createObjectURL(selectedFile)}
+                    controls
+                    className="mt-2 w-64 h-36 object-cover rounded-md mb-4"
+                  />
+                )}
                 <button
                   onClick={handleVideoToAudio}
                   className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
@@ -622,8 +656,8 @@ export default function ToolInputPanel({ selectedTool }) {
                 {error && <p className="text-red-600 mt-2">{error}</p>}
                 {extractedAudioURL && (
                   <>
-                    <h3 className="mt-4">Extracted Audio:</h3>
-                    <audio src={extractedAudioURL} controls />
+                    <h3 className="mt-4 text-md font-medium text-gray-700">Extracted Audio:</h3>
+                    <audio src={extractedAudioURL} controls className="w-full" />
                     <br />
                     <a href={downloadLink} download="extracted_audio.mp3">
                       <button className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 mt-4">
@@ -642,7 +676,7 @@ export default function ToolInputPanel({ selectedTool }) {
                 </h3>
                 <textarea
                   rows="4"
-                  className="w-full p-2 border border-green-300 rounded mb-4"
+                  className="w-full p-2 border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent mb-4"
                   placeholder="Enter text here..."
                   value={text}
                   onChange={(e) => setText(e.target.value)}
@@ -661,7 +695,8 @@ export default function ToolInputPanel({ selectedTool }) {
                 {ttsAudioURL && (
                   <>
                     <div className="mt-4">
-                      <audio controls src={ttsAudioURL}></audio>
+                      <h3 className="text-md font-medium text-gray-700">Generated Audio:</h3>
+                      <audio controls src={ttsAudioURL} className="w-full"></audio>
                     </div>
                     <a href={ttsAudioURL} download="generated_speech.mp3">
                       <button className="bg-green-700 text-white px-4 py-2 mt-3 rounded hover:bg-green-800">
@@ -678,12 +713,15 @@ export default function ToolInputPanel({ selectedTool }) {
                 <h3 className="text-lg font-semibold text-green-900 mb-2">
                   Image Text to Speech
                 </h3>
-                <input
-                  type="file"
-                  accept="image/*"
-                  className="mb-4"
-                  onChange={handleFileChange}
-                />
+                <label className="block mb-4">
+                  <span className="sr-only">Choose image file</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                    onChange={handleFileChange}
+                  />
+                </label>
                 <button
                   onClick={handleImgTts}
                   className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
@@ -698,7 +736,8 @@ export default function ToolInputPanel({ selectedTool }) {
                 {imgTtsAudioURL && (
                   <>
                     <div className="mt-4">
-                      <audio controls src={imgTtsAudioURL}></audio>
+                      <h3 className="text-md font-medium text-gray-700">Generated Audio:</h3>
+                      <audio controls src={imgTtsAudioURL} className="w-full"></audio>
                     </div>
                     <a href={imgTtsAudioURL} download="generated_speech.mp3">
                       <button className="bg-green-700 text-white px-4 py-2 mt-3 rounded hover:bg-green-800">
@@ -715,12 +754,15 @@ export default function ToolInputPanel({ selectedTool }) {
                 <h3 className="text-lg font-semibold text-green-900 mb-2">
                   Text File to Speech
                 </h3>
-                <input
-                  type="file"
-                  accept=".txt"
-                  className="mb-4 w-full p-2 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
-                  onChange={handleFileChange}
-                />
+                <label className="block mb-4">
+                  <span className="sr-only">Choose text file</span>
+                  <input
+                    type="file"
+                    accept=".txt"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                    onChange={handleFileChange}
+                  />
+                </label>
                 <button
                   onClick={handleTextFileToSpeech}
                   className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
@@ -734,7 +776,7 @@ export default function ToolInputPanel({ selectedTool }) {
                 {error && <p className="text-red-600 mt-2">{error}</p>}
                 {textFileTtsAudioURL && (
                   <div className="mt-4">
-                    <h4 className="text-lg font-medium text-gray-700">
+                    <h4 className="text-md font-medium text-gray-700">
                       Generated Audio:
                     </h4>
                     <audio

@@ -10,7 +10,7 @@ export default function Navbar() {
   
         <div className="flex items-center gap-2">
        
-          <img className="h-10 w-10" src="/microphone.gif" alt="" />
+          <img className="h-10 w-10" src="/mic.gif" alt="" />
       
           <h1 className="text-white text-2xl font-bold">Voxify</h1> {/* Name */}
         </div>
