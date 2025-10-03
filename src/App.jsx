@@ -10,11 +10,13 @@ import Footer from "./components/Footer";
 import FeatureCard from "./components/FeatureCard";
 import FeedbackForm from "./components/FeedbackForm";
 import "./App.css"
-
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 export default function App() {
   return (
     <>
     <div className="font-sans bg-background-dark min-h-screen text-gray-800 bg-[#bbdefb]">
+      <ToastContainer />
       <Navbar />
       <Hero />
       <HowItWorks />

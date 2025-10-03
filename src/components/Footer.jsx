@@ -23,12 +23,13 @@ export default function Footer() {
   };
   return (
     <>
-      <ToastContainer />
+     
       <footer className="bg-[darkslategrey] text-white py-10 mt-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             {/* About Section */}
             <div>
+                <img className="h-12 w-12" src="/microphone.gif" alt="" />
               <h1 className="text-lg font-semibold mb-3 text-white">
                 About <strong>Voxify</strong>
               </h1>
@@ -98,8 +99,9 @@ export default function Footer() {
                 </button>
               </form>
               <div className="flex justify-center md:justify-start mt-4 space-x-4 text-white">
-                {/* Placeholder icons — replace with actual icons */}
-                <a href="#" className="hover:text-green-900 text-xl">
+                
+                {/* Instagram logo */}
+                <a href="https://www.instagram.com/__darkcipher__?igsh=dDZta3J3eXEwZHZr" target="_blank" className="hover:text-green-900 text-xl">
                   <svg
                     width="22"
                     height="22"
@@ -127,7 +129,8 @@ export default function Footer() {
                     </defs>
                   </svg>
                 </a>
-                <a href="#" className="hover:text-green-900 text-xl">
+                {/* Github logo */}
+                <a href="https://github.com/preet-99" target="_blank" className="hover:text-green-900 text-xl">
                   <svg
                     width="31"
                     height="30"
@@ -184,7 +187,8 @@ export default function Footer() {
                     </defs>
                   </svg>
                 </a>
-                <a href="#" className="hover:text-green-900 text-xl">
+                {/* Linkedin Logo */}
+                <a href="https://www.linkedin.com/in/preet-vishwakarma-b775a7317/" target="_blank" className="hover:text-green-900 text-xl">
                   <svg
                     width="23"
                     height="22"
@@ -198,6 +202,7 @@ export default function Footer() {
                     />
                   </svg>
                 </a>
+                {/* Gmail Logo */}
                 <a href="#" className="hover:text-green-900 text-xl">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
