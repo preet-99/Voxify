@@ -449,7 +449,7 @@ export default function ToolInputPanel({ selectedTool }) {
                   <input
                     type="file"
                     accept="video/*"
-                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100 cursor-pointer"
                     onChange={handleFileChange}
                   />
                 </label>
@@ -462,7 +462,7 @@ export default function ToolInputPanel({ selectedTool }) {
                 )}
                 <button
                   onClick={handleVideoToText}
-                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
+                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 cursor-pointer"
                   disabled={isLoading}
                 >
                   Extract Text
@@ -480,7 +480,7 @@ export default function ToolInputPanel({ selectedTool }) {
                       onClick={() =>
                         navigator.clipboard.writeText(transcribedText)
                       }
-                      className="mt-2 bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                      className="mt-2 bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 cursor-pointer"
                     >
                       Copy Text
                     </button>
@@ -499,13 +499,13 @@ export default function ToolInputPanel({ selectedTool }) {
                   <input
                     type="file"
                     accept="audio/*"
-                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100 cursor-pointer"
                     onChange={handleFileChange}
                   />
                 </label>
                 <button
                   onClick={handleAudioToText}
-                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
+                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 cursor-pointer"
                   disabled={isLoading}
                 >
                   Extract Text
@@ -523,7 +523,7 @@ export default function ToolInputPanel({ selectedTool }) {
                       onClick={() =>
                         navigator.clipboard.writeText(transcribedText)
                       }
-                      className="mt-2 bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                      className="mt-2 bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 cursor-pointer"
                     >
                       Copy Text
                     </button>
@@ -542,7 +542,7 @@ export default function ToolInputPanel({ selectedTool }) {
                   <input
                     type="file"
                     accept="video/*"
-                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100 cursor-pointer"
                     onChange={handleFileChange}
                   />
                 </label>
@@ -563,7 +563,7 @@ export default function ToolInputPanel({ selectedTool }) {
                     step="0.1"
                     value={trimStart}
                     onChange={(e) => setTrimStart(e.target.value)}
-                    className="w-full p-2 border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full p-2 border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent cursor-pointer"
                     placeholder="e.g., 10.5"
                   />
                 </div>
@@ -588,13 +588,13 @@ export default function ToolInputPanel({ selectedTool }) {
                         setTrimEnd("");
                       }
                     }}
-                    className="w-full p-2 border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full p-2 border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent cursor-pointer"
                     placeholder="e.g., 20.5"
                   />
                 </div>
                 <button
                   onClick={handleTrimVideo}
-                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
+                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 cursor-pointer"
                   disabled={isLoading}
                 >
                   Trim Video
@@ -613,7 +613,7 @@ export default function ToolInputPanel({ selectedTool }) {
                     />
                     <br />
                     <a href={downloadLink} download="trimmed_video.mp4">
-                      <button className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 mt-4">
+                      <button className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 mt-4 cursor-pointer">
                         Download Trimmed Video
                       </button>
                     </a>
@@ -632,7 +632,7 @@ export default function ToolInputPanel({ selectedTool }) {
                   <input
                     type="file"
                     accept="video/*"
-                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100 cursor-pointer"
                     onChange={handleFileChange}
                   />
                 </label>
@@ -645,7 +645,7 @@ export default function ToolInputPanel({ selectedTool }) {
                 )}
                 <button
                   onClick={handleVideoToAudio}
-                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
+                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 cursor-pointer"
                   disabled={isLoading}
                 >
                   Convert
@@ -660,7 +660,7 @@ export default function ToolInputPanel({ selectedTool }) {
                     <audio src={extractedAudioURL} controls className="w-full" />
                     <br />
                     <a href={downloadLink} download="extracted_audio.mp3">
-                      <button className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 mt-4">
+                      <button className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 mt-4 cursor-pointer">
                         Download Audio
                       </button>
                     </a>
@@ -683,7 +683,7 @@ export default function ToolInputPanel({ selectedTool }) {
                 />
                 <button
                   onClick={handleTts}
-                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
+                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 cursor-pointer"
                   disabled={isLoading}
                 >
                   Convert to Audio
@@ -699,7 +699,7 @@ export default function ToolInputPanel({ selectedTool }) {
                       <audio controls src={ttsAudioURL} className="w-full"></audio>
                     </div>
                     <a href={ttsAudioURL} download="generated_speech.mp3">
-                      <button className="bg-green-700 text-white px-4 py-2 mt-3 rounded hover:bg-green-800">
+                      <button className="bg-green-700 text-white px-4 py-2 mt-3 rounded hover:bg-green-800 cursor-pointer">
                         Download Audio
                       </button>
                     </a>
@@ -718,13 +718,13 @@ export default function ToolInputPanel({ selectedTool }) {
                   <input
                     type="file"
                     accept="image/*"
-                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100 cursor-pointer"
                     onChange={handleFileChange}
                   />
                 </label>
                 <button
                   onClick={handleImgTts}
-                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
+                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 cursor-pointer"
                   disabled={isLoading}
                 >
                   Convert to Audio
@@ -740,7 +740,7 @@ export default function ToolInputPanel({ selectedTool }) {
                       <audio controls src={imgTtsAudioURL} className="w-full"></audio>
                     </div>
                     <a href={imgTtsAudioURL} download="generated_speech.mp3">
-                      <button className="bg-green-700 text-white px-4 py-2 mt-3 rounded hover:bg-green-800">
+                      <button className="bg-green-700 text-white px-4 py-2 mt-3 rounded hover:bg-green-800 cursor-pointer">
                         Download Audio
                       </button>
                     </a>
@@ -759,13 +759,13 @@ export default function ToolInputPanel({ selectedTool }) {
                   <input
                     type="file"
                     accept=".txt"
-                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100 cursor-pointer"
                     onChange={handleFileChange}
                   />
                 </label>
                 <button
                   onClick={handleTextFileToSpeech}
-                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800"
+                  className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800 cursor-pointer"
                   disabled={isLoading}
                 >
                   Convert to audio
@@ -785,7 +785,7 @@ export default function ToolInputPanel({ selectedTool }) {
                       className="w-full mt-2"
                     />
                     <a href={downloadLink} download="generated_speech.mp3">
-                      <button className="bg-green-700 text-white px-4 py-2 mt-3 rounded hover:bg-green-800 transition-colors">
+                      <button className="bg-green-700 text-white px-4 py-2 mt-3 rounded hover:bg-green-800 transition-colors cursor-pointer">
                         Download Audio
                       </button>
                     </a>
