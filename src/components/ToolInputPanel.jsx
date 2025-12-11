@@ -27,7 +27,7 @@ export default function ToolInputPanel({ selectedTool }) {
         const response = await fetch("http://127.0.0.1:5000/");
         const data = await response.json();
         setMsg(data);
-        console.log("Home endpoint response:", data);
+        // console.log("Home endpoint response:", data);
       } catch (error) {
         console.error("Error fetching data:", error);
         setMsg({ error: "Failed to fetch data" });
@@ -798,7 +798,7 @@ export default function ToolInputPanel({ selectedTool }) {
             return (
               <div className="bg-white p-6 rounded-lg shadow-md mt-10">
                 <p className="text-gray-600">
-                  Please select a tool to proceed.
+                  Please select a tool to proceed. 
                 </p>
               </div>
             );

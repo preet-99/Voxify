@@ -22,39 +22,14 @@ export default function Features() {
       </h2>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
-        <FeatureCard
-          id="videoTotext"
-          title="Video to Text"
-          desc="Extract speech & subtitles from videos instantly."
-          icon={
-            <img
-              src="/src/assets/live_video_on_100.gif"
-              alt="Video to Text GIF"
-              className="w-8 h-8"
-            />
-          } // Replace with your GIF path or URL
-          onClick={setSelectedTool}
-        />
-        <FeatureCard
-          id="audioTotext"
-          title="Audio to Text"
-          desc="Extract speech from audio instantly."
-          icon={
-            <img
-              src="/src/assets/audio_wave_48.gif"
-              alt="Audio to Text GIF"
-              className="w-8 h-8"
-            />
-          } // Replace with your GIF path or URL
-          onClick={setSelectedTool}
-        />
+     
         <FeatureCard
           id="trim"
           title="Trim Video"
           desc="Trim your favourite part as you want."
           icon={
             <SquareSplitHorizontal/>
-          } // Replace with your GIF path or URL
+          } 
           onClick={setSelectedTool}
         />
         <FeatureCard
@@ -63,11 +38,12 @@ export default function Features() {
           desc="Convert video file into audio in seconds."
           icon={
             <img
+
               src="/src/assets/music_file.gif"
               alt="Video to Audio GIF"
               className="w-9 h-9"
             />
-          } // Replace with your GIF path or URL
+          } 
           onClick={setSelectedTool}
         />
         <FeatureCard
@@ -76,7 +52,7 @@ export default function Features() {
           desc="Turn written text into natural-sounding speech."
           icon={
             <Type/>
-          } // Replace with your GIF path or URL
+          } 
           onClick={setSelectedTool}
         />
 
@@ -90,7 +66,7 @@ export default function Features() {
               alt="Image Text to Speech GIF"
               className="w-9 h-9"
             />
-          } // Replace with your GIF path or URL
+          } 
           onClick={setSelectedTool}
         />
         <FeatureCard
@@ -103,7 +79,33 @@ export default function Features() {
               alt="Text File to Speech GIF"
               className="w-9 h-9"
             />
-          } // Replace with your GIF path or URL
+          } 
+          onClick={setSelectedTool}
+        />
+           <FeatureCard
+          id="videoTotext"
+          title="Video to Text"
+          desc="Extract speech & subtitles from videos instantly."
+          icon={
+            <img
+              src="/src/assets/live_video_on_100.gif"
+              alt="Video to Text GIF"
+              className="w-8 h-8"
+            />
+          } 
+          onClick={setSelectedTool}
+        />
+        <FeatureCard
+          id="audioTotext"
+          title="Audio to Text"
+          desc="Extract speech from audio instantly."
+          icon={
+            <img
+              src="/src/assets/audio_wave_48.gif"
+              alt="Audio to Text GIF"
+              className="w-8 h-8"
+            />
+          } 
           onClick={setSelectedTool}
         />
       </div>

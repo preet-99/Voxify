@@ -1,7 +1,7 @@
 import { FaUser, FaEnvelope } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
-import "react-toastify/dist/ReactToastify.css"; // Import the CSS
+import "react-toastify/dist/ReactToastify.css"; 
 
 export default function FeedbackForm() {
   const [form, setForm] = useState({name: "", email:"", feedback:""})
